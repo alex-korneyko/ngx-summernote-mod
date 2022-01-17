@@ -1,0 +1,21 @@
+{
+  "name": "@alex-apps-dev/ngx-summernote-mod",
+  "version": "0.1.0",
+  "author": "Alex Korneiko",
+  "license": "MIT",
+  "readme": "README.md",
+  "homepage": "https://github.com/alex-korneyko/ngx-summernote-mod",
+  "bugs": {
+    "url": "https://github.com/alex-korneyko/ngx-summernote-mod/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alex-korneyko/ngx-summernote-mod.git"
+  },
+  "peerDependencies": {
+    "@angular/common": "8.x - 12.x",
+    "@angular/core": "8.x - 12.x",
+    "@angular/forms": "8.x - 12.x",
+    "summernote": ">=0.8.10"
+  }
+}

@@ -1,0 +1,56 @@
+<h3>Summernote editor</h3>
+
+<a href="#" (click)="showTemplateForm = !showTemplateForm">
+  <span *ngIf="!showTemplateForm">Show template form</span>
+  <span *ngIf="showTemplateForm">Show reactive form</span>
+</a>
+
+<ng-container *ngIf="!showTemplateForm">
+  <h4>Reactive forms</h4>
+  <div>
+    <button (click)="enableEditor()" [disabled]="!editorDisabled">Enable</button>
+    <button (click)="disableEditor()" [disabled]="editorDisabled">Disable</button>
+  </div>
+  
+  <div [formGroup]="form">
+    <div formControlName="html" 
+         [ngxSummernote]="config"
+         [ngxSummernoteDisabled]="editorDisabled"
+         (blur)="onBlur()"
+         (mediaDelete)="onDelete($event)"
+         (summernoteInit)="summernoteInit($event)">
+     </div>
+  </div>
+  
+  <h3>HTML</h3>
+  <div [ngxSummernoteView]="form.get('html').value"></div>
+  
+  <h3>Code</h3>
+  <pre>{{form.get('html').value}}</pre>
+  <div *ngIf="form.get('html').invalid">
+    {{form.get('html').errors | json}}
+  </div>
+</ng-container>
+
+<ng-container *ngIf="showTemplateForm">
+  <h4>Template forms</h4>
+  <form>
+    <textarea 
+        name="html" [(ngModel)]="html"
+        [ngxSummernote]="config"
+        [ngxSummernoteDisabled]="editorDisabled"
+        (blur)="onBlur()"
+        (mediaDelete)="onDelete($event)"
+        (summernoteInit)="summernoteInit($event)">
+    </textarea>
+  </form>
+  
+  <h3>HTML</h3>
+  <div [ngxSummernoteView]="html"></div>
+  
+  <h3>Code</h3>
+  <pre>{{html}}</pre>
+  <div *ngIf="!html || html === ''">
+    Required
+  </div>
+</ng-container>
